@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import { useQuery, useMutation } from 'react-query';
 
 import NavbarAdmin from '../components/NavbarAdmin';
@@ -11,7 +11,7 @@ import imgEmpty from '../assets/empty.svg';
 import { API } from '../config/api';
 
 export default function CategoryAdmin() {
-  let history = useHistory();
+  let navigate = useNavigate();
 
   const title = 'Category admin';
   document.title = 'DumbMerch | ' + title;
@@ -29,7 +29,7 @@ export default function CategoryAdmin() {
   });
 
   const handleEdit = (id) => {
-    history.push(`update-category/${id}`);
+    navigate(`/update-category/${id}`);
   };
 
   const handleDelete = (id) => {
@@ -55,7 +55,7 @@ export default function CategoryAdmin() {
   }, [confirmDelete]);
 
   const addCategory = () => {
-    history.push('/add-category');
+    navigate('/add-category');
   };
 
   return (

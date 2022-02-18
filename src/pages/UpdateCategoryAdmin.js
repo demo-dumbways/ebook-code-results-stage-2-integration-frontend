@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { useParams, useHistory } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 import { useQuery, useMutation } from 'react-query';
 
 import NavbarAdmin from '../components/NavbarAdmin';
@@ -11,7 +11,7 @@ export default function UpdateCategoryAdmin() {
   const title = 'Category admin';
   document.title = 'DumbMerch | ' + title;
 
-  let history = useHistory();
+  let navigate = useNavigate();
   const { id } = useParams();
   const [category, setCategory] = useState({ name: '' });
 
@@ -41,7 +41,7 @@ export default function UpdateCategoryAdmin() {
 
       const response = await API.patch('/category/' + id, body, config);
 
-      history.push('/category-admin');
+      navigate('/category-admin');
     } catch (error) {
       console.log(error);
     }

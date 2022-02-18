@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import { useMutation } from 'react-query';
 
 import NavbarAdmin from '../components/NavbarAdmin';
@@ -12,7 +12,7 @@ import { API } from '../config/api';
 export default function AddCategoryAdmin() {
   console.clear();
 
-  let history = useHistory();
+  let navigate = useNavigate();
   const [category, setCategory] = useState('');
 
   const title = 'Category admin';
@@ -39,7 +39,7 @@ export default function AddCategoryAdmin() {
       // Insert category data
       const response = await API.post('/category', body, config);
 
-      history.push('/category-admin');
+      navigate('/category-admin');
     } catch (error) {
       console.log(error);
     }

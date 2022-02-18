@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import ShowMoreText from 'react-show-more-text';
 import rupiahFormat from 'rupiah-format';
 import { useQuery, useMutation } from 'react-query';
@@ -13,7 +13,7 @@ import imgEmpty from '../assets/empty.svg';
 import { API } from '../config/api';
 
 export default function ProductAdmin() {
-  let history = useHistory();
+  let navigate = useNavigate();
 
   const title = 'Product admin';
   document.title = 'DumbMerch | ' + title;
@@ -31,11 +31,11 @@ export default function ProductAdmin() {
   });
 
   const addProduct = () => {
-    history.push('/add-product');
+    navigate('/add-product');
   };
 
   const handleUpdate = (id) => {
-    history.push('/update-product/' + id);
+    navigate('/update-product/' + id);
   };
 
   const handleDelete = (id) => {
